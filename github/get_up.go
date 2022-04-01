@@ -56,7 +56,14 @@ func GetUp(privateToken, owner, repo, city string) {
 	issue := &github.Issue{}
 	if len(issues) == 0 {
 		issueRequest := &github.IssueRequest{Title: github.String("起床时间记录")}
-		issue, _, _ = u.Issues.Create(ctx, owner, repo, issueRequest)
+		newIssue, rsp, err := u.Issues.Create(ctx, owner, repo, issueRequest)
+		if err != nil {
+			fmt.Println(err)
+			fmt.Println(rsp)
+			return
+		} else {
+			issue = newIssue
+		}
 	} else {
 		issue = issues[0]
 	}
