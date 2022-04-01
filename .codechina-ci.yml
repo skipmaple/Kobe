@@ -1,0 +1,16 @@
+image: golang:1.17
+
+variables:
+  REPO_NAME: get_up
+
+stages:
+  - run
+
+compile:
+  stage: run
+  script:
+    - export GOPROXY=https://goproxy.io,direct
+    - go mod tidy
+    - go mod vendor
+    - go build -race -ldflags "-extldflags '-static'" -o get_up_exec .
+    - ./get_up_exec "gitcode" $PERSONAL_ACCESS_TOKEN $CI_PROJECT_ID $ISSUE_ID $CITY
