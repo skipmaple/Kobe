@@ -58,9 +58,7 @@ func GetUp(privateToken, owner, repo, city string) {
 		issueRequest := &github.IssueRequest{Title: github.String("起床时间记录")}
 		newIssue, rsp, err := u.Issues.Create(ctx, owner, repo, issueRequest)
 		if err != nil {
-			log.Println(err)
-			log.Println(rsp)
-			return
+			log.Fatalf("Create Issue Error.\nResponse: %v\n Error: %v\n", rsp, err)
 		} else {
 			issue = newIssue
 		}
@@ -87,8 +85,7 @@ func GetUp(privateToken, owner, repo, city string) {
 	}
 	_, _, err := u.Issues.CreateComment(ctx, owner, repo, issue.GetNumber(), issueComment)
 	if err != nil {
-		log.Println(err)
-		return
+		log.Fatalf("Create Issue Comment Error: %v\n", err)
 	}
 
 	log.Println(msg)
