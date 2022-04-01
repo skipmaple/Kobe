@@ -58,8 +58,8 @@ func GetUp(privateToken, owner, repo, city string) {
 		issueRequest := &github.IssueRequest{Title: github.String("起床时间记录")}
 		newIssue, rsp, err := u.Issues.Create(ctx, owner, repo, issueRequest)
 		if err != nil {
-			fmt.Println(err)
-			fmt.Println(rsp)
+			log.Println(err)
+			log.Println(rsp)
 			return
 		} else {
 			issue = newIssue
@@ -70,14 +70,14 @@ func GetUp(privateToken, owner, repo, city string) {
 
 	isTodayHaveRecord := isTodayHaveGetup(u, owner, repo, issue)
 	if isTodayHaveRecord {
-		fmt.Println("今天已经有起床记录了.")
+		log.Println("今天已经有起床记录了.")
 		return
 	}
 
 	msg, isGetupEarly := makeGetupMsg(city)
 
 	if !isGetupEarly {
-		fmt.Println("当前打卡时间 不在有效时间范围内.")
+		log.Println("当前打卡时间 不在有效时间范围内.")
 		return
 	}
 
@@ -87,11 +87,11 @@ func GetUp(privateToken, owner, repo, city string) {
 	}
 	_, _, err := u.Issues.CreateComment(ctx, owner, repo, issue.GetNumber(), issueComment)
 	if err != nil {
-		fmt.Println(err)
+		log.Println(err)
 		return
 	}
 
-	fmt.Println(msg)
+	log.Println(msg)
 
 }
 
