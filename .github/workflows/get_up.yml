@@ -29,4 +29,4 @@ jobs:
           go mod tidy
           go mod vendor
           go build -race -ldflags "-extldflags '-static'" -o get_up_exec .
-          ./get_up_exec "github" ${{ secrets.GETUP_TOKEN }} ${{ github.repository }} $CITY
+          ./get_up_exec "github" ${{ secrets.GETUP_TOKEN }} ${{ github.repository }} --weather_message ": ${{ github.event.inputs.message }}"
