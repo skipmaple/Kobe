@@ -107,7 +107,7 @@ https://chenzaichun.github.io/post/2021-09-21-github-action-trigger-by-curl-task
 
 ![img](doc/github/quick_cmd.jpeg)
 
-稍等一小会，回到 GitCode 仓库的 issue 选项卡，在评论区就能见到程序运行后的结果。
+稍等一小会，回到 Github 仓库的 issue 选项卡，在评论区就能见到程序运行后的结果。
 
 如果想让快捷指令在每次关闭闹钟后自动运行，可以切换到快捷指令的「**自动化**」页面，研究刚添加的快捷指令，在自动化里面创建一个同样的命令。
 
