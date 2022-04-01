@@ -68,11 +68,11 @@ func GetUp(privateToken, owner, repo, city string) {
 		issue = issues[0]
 	}
 
-	isTodayHaveRecord := isTodayHaveGetup(u, owner, repo, issue)
-	if isTodayHaveRecord {
-		log.Println("今天已经有起床记录了.")
-		return
-	}
+	//isTodayHaveRecord := isTodayHaveGetup(u, owner, repo, issue)
+	//if isTodayHaveRecord {
+	//	log.Println("今天已经有起床记录了.")
+	//	return
+	//}
 
 	msg, isGetupEarly := makeGetupMsg(city)
 
